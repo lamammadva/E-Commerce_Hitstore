@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+        <div class="main_contact_area">
+            <div class="breadcrumbs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="container-inner">
+                                <ul>
+                                    <li class="home">
+                                        <a href="{% url 'goldapp:index' %}">Home</a>
+                                        <span>
+                                            <i class="fa fa-angle-right"></i>
+                                        </span>
+                                    </li>
+                                    <li class="home-two">
+                                        <a href="{% url 'blog' %}">Blog</a>
+                                        <span>
+                                            <i class="fa fa-angle-right"></i>
+                                        </span>
+                                    </li>
+                                    <li class="category3">
+                                        <strong>Blog-detail</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <section class="main-blog-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-9">
+                        <div class="single-bolg s-post blog">
+                            <div class="post-format-area">
+                                <div class="b-slide-all owl-carousel">
+                                {% if blog_details.category.name == 'Image' %}
+                                    <img    src="{{blog_details.file.url}} " alt="">
+                                {% elif blog_details.category.name == 'Video' %}
+                                  <video controls>
+                                    <source src="{{ blog_details.file.url }}" type="video/mp4">
+                                </video>
+                                {% elif blog_details.category.name == 'Audio' %}
+                                  <audio controls> 
+                                    <source src="{{ blog_details.file.url}}" type="audio/mp3">
+                                  </audio>
+                                {% endif %}
+                                </div>
+                            </div>
+                            <div class="entry-header-area">
+                                <div class="post-types">
+                                    <i class="fa fa-picture-o"></i>
+                                </div>
+                                <div class="info-blog">
+                                    <div class="single-b-info category-name">
+                                        <i class="fa fa-folder-open-o"></i>
+                                            {{blog_details.title}}
+                                    </div>
+                                    <div class="single-b-info createdby">
+                                        <i class="fa fa-user"></i>
+                                        <span>{{blog_details.author}}</span>
+                                    </div>
+                                    <!-- <div class="single-b-info hits">
+                                        <i class="fa fa-eye"></i>
+                                        <span>Hits: 256</span>
+                                    </div> -->
+                                    <div class="single-b-info post_rating">
+                                        
+                                    </div>
+                                    <h2 class="name">
+                                        {{blog_details.title}}
+                                    </h2>
+                                    <p>{{blog_details.description}}</p>
+                                </div>
+                                <div class="blog-comments-links">
+                                    <a class="comments-link" data-bs-toggle="modal" data-bs-target="#exampleModal" href="" title="1 comment">{{blog.num_comment}} comment</a>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">{{num_comment}}Comments</h1>
+                                                <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div style="margin-left: 25px;" class="modal-body">
+                                                {% for comment in blog_details.comments.all %}
+                                                    <div class="reviews-wrapper" style="border-radius: 13px;">
+                                                        <div style="text-align: end;" ><small >{{comment.created_at|date:"d/m/y"}}</small></div>
+                                                        <div><b>{{comment.name}}:</b></div>
+                                                        <div><small>{{comment.comment}}</small></div>                                        
+                                                    </div>
+                                                    <br>
+                                                    {% endfor %}
+                                                </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+                            <p> {{blog_details.blogdetail|safe}} </p>
+                            <div class="blog-comment-area">
+                                <div class="all-p-title">
+                                    <h3>Add comment</h3>
+                                </div>
+                                <form method="POST" action="">
+                                  {% csrf_token %}
+                                  <div name="comment">{{comment_form.as_p}}</div>
+                                  <button  value="Subscribe" type="submit">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    
+                    <div class="col-lg-3 col-md-3">
+                        <div class="blog-right-sidebar">
+                            <div class="latest-posts">
+                                <h3 class="sp-module-title">
+                                    <span>Author</span> 
+                                </h3>
+                                {% for cat in authors %}
+                                <div class="single-l-post">
+                                    <a href="/blog/?categories={{cat.id}}">{{cat.title}}</a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="latest-posts">
+                                <h3 class="sp-module-title">
+                                    <span>Category</span>
+                                </h3>
+                                {% for cate in category %}
+                                    <div class="single-l-post">
+                                        <a href="/blog/?type={{cate.id}}">{{cate.name}}</a>
+                                    </div>
+                                    
+
+                                {% endfor %}
+                            </div>
+                            <div class="add-r-sidebar">
+                                <p class="banner-block">
+                                    <a href="#">
+                                        <img alt="" src="{% static 'img/blog/3_002.jpg' %}">
+                                    </a>
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+       
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- Add your site or application content here -->
+        <!-- start header_area
+		============================================ -->
+
+        <!-- end header_area
+		============================================ -->
+        <!-- start main_shop_area
+		============================================ -->
+        <section class="main_contact_area">
+            <div class="breadcrumbs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="container-inner">
+                                <ul>
+                                    <li class="home">
+                                        <a href="#">Home</a>
+                                        <span>
+                                            <i class="fa fa-angle-right"></i>
+                                        </span>
+                                    </li>
+                                    <li class="category3">
+                                        <strong>contact </strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-content-area">
+                        <h2>Customer service -<strong> Contact us</strong></h2>
+                        <div class="contact-baner">
+                            <div class="contact-text">
+                                <h2>Contact info</h2>
+                                <p>get in touch</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-map">
+                        <h3>We are located</h3>
+                        <div id="hastech">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2224905.8379164026!2d-63.27089988050263!3d-2.8569688249815943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91e8605342744385%3A0x3d3c6dc1394a7fc7!2sAmazon%20Rainforest!5e0!3m2!1sen!2sbd!4v1635401091721!5m2!1sen!2sbd" style="border:0;width:100%;height:100%;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="contact-from-atea">
+                        <div class="form-and-info">
+                            <div class="row">
+                                <div class="col-md-5 col-lg-4">
+                                    <div class="contactDetails contactHead">
+                                        <h3>CONTACT Info</h3>
+                                        <p>
+                                            <span class="iconContact">
+                                                <i class="fa fa-map-marker"></i>
+                                            </span>
+                                            8901 Binghamton Road, Glasgow
+                                            <br>
+                                            D04 89 GR, New York.
+                                        </p>
+                                        <p>
+                                            <span class="iconContact">
+                                                <i class="fa fa-phone"></i>
+                                            </span>
+                                            Telephone: (801) 2345 - 6789
+                                            <br>
+                                            Fax: (801) 2345 - 6789
+                                        </p>
+                                        <p>
+                                            <span class="iconContact">
+                                                <i class="fa fa-envelope-o"></i>
+                                            </span>
+                                            Email: admin@Bootexperts.com
+                                            <br>
+                                            Website: www.hitstorethemes.com
+                                        </p>
+                                    </div>
+                                    <div class="social-area contactHead">
+                                        <h3>Flowe us</h3>
+                                        <ul class="socila-icon">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-rss"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-google-plus"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-7 col-lg-8">
+                                    <div class="contactfrom">
+                                        <h1>message</h1>
+                                        <form id="contact-form" action="{% url 'goldapp:contact_us' %}" method="POST">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    {{forms.first_name}}
+                                                </div>
+                                                <div class="col-lg-6 contactemail">
+                                                    {{forms.last_name}}
+                                                </div>
+                                                <div class="col-lg-6 contactemail">
+                                                    {{forms.email}}
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    {{forms.message}}
+                                                    <button class="btn btnContact" type="submit">send message</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- <p class="form-messege"></p> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock %}

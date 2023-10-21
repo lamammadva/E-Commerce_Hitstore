@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+
+<div style="margin: 50px;" class="tab-content jump">
+    <div role="tabpanel" class="tab-pane active" id="home">
+        <div class="shop-tab shop-rating">
+            <div id="shop-product" class="row">
+                {% for product in products %}
+                <!-- single-product start -->
+                <div  class="col-xl-3 col-lg-4 col-md-4">
+                    <div class="single-product">
+                        <span class="sale-text">{% translate 'Sale' %}</span>
+                        <div  class="product-img">
+                            <a id="product_detail_page" href="{% url 'product_detail' product.product_version.first.pk %}">
+                                <img  style="height: 120px; width: 180px;" class="primary-image" src="{{product.product_version.first.cover_image.url}}" alt="" />
+                            </a>							
+                        </div>
+                        <div class="product-content">
+                            <div class="price-box">
+                                {% if product.sale %}
+                                <span class="special-price">{{product.old_price}}</span>
+                                <span class="old-price">{{product.price}}</span>
+                                {% else %}
+                                <span class="special-price">{{product.price}}</span>
+                                {% endif %}
+                            </div>
+                            <h2 class="product-name"><a href="{% url 'product_detail' product.pk %}">{{product.title}} {{product.product_version.color.name}}</a></h2>
+                           
+                        </div>
+                    </div>
+                </div>
+                       
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block content %}        
+        <section class="main_shop_area" id="page">
+            <div class="breadcrumbs">
+                <div class="container">
+                    <div class="container-inner">
+                        <ul class="tasnimm">
+                            <li class="home">
+                                <a href="#">{% translate 'Home' %}</a>
+                                <span>
+                                    <i class="fa fa-angle-right"></i>
+                                </span>
+                            </li>
+                            <li class="category3">
+                                <strong>{% translate 'Smartphones & Accessories' %}</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="category-image-all">
+                <div class="container">
+                    <div class="category-image">
+                        <img title="Smartphones & Accessories" alt="Smartphones & Accessories" src="{% static 'img/shop/category-image.jpg' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="main_shop_all">
+                <div class="container">
+                    <div class="row flex-row-reverse">
+                        <div class="col-lg-9 col-md-12 col-12">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-12">
+                                    <div class="features-tab">
+                                      <!-- Nav tabs -->
+                                        <div class="shop-all-tab">
+                                            <div class="two-part">
+                                                <ul class="nav tabs" role="tablist">
+                                                    <li role="presentation"><a href="#home" class="active" aria-controls="home" role="tab" data-bs-toggle="tab"><i class="fa fa-th-large"></i></a></li>
+                                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-bs-toggle="tab"><i class="fa fa-align-justify"></i></a></li>
+                                                </ul>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                      <!-- Tab panes -->
+                                        <div class="tab-content jump">
+                                            <div role="tabpanel" class="tab-pane active" id="home" style="margin-left: -24px;">
+                                                <div class="shop-tab shop-rating">
+                                                    <div id="shop-product" class="row">
+                                                        {% for product in products %}
+                                                        <!-- single-product start -->
+                                                        <div  class="col-xl-3 col-lg-4 col-md-4">
+                                                            <div class="single-product">
+                                                                <span class="sale-text">{% translate 'Sale' %}</span>
+                                                                <div  class="product-img">
+                                                                    <a id="product_detail_page" href="{% url 'product_detail' product.pk %}">
+                                                                        <img  style="height: 120px; width: 180px;" class="primary-image" src="{{product.product_version.first.cover_image.url}}" alt="" />
+                                                                    </a>							
+                                                                </div>
+                                                                <div class="product-content">
+                                                                    <div class="price-box">
+                                                                        {% if product.sale %}
+                                                                            <span class="special-price">{{product.old_price}}</span>
+                                                                            <span class="old-price">{{product.price}}</span>
+                                                                        {% else %}
+                                                                            <span class="special-price">{{product.price}}</span>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <h2 class="product-name"><a href="{% url 'product_detail' product.pk %}">{{product.title|safe}}</a></h2>
+                                                                    
+                                                                    <div class="product-icon">
+                                                                        <ul class="d-flex">
+                                                                            {% if user.is_authenticated %}
+                                                                            <li class="basket" data-id="{{product.product_version.first.pk}}"><i style="cursor: pointer;" data-id="{{product.product_version.first.pk}}" class="fa fa-shopping-cart"></i></li>
+                                                                            <li class="wishlist" data-id="{{product.product_version.first.pk}}"><i style="cursor: pointer;" data-id="{{product.product_version.first.pk}}" class="fa fa-heart"></i></li>
+                                                                            {% else %}
+                                                                            <li><a href="{% url 'login' %}"><h6 style="font-size: small; color: blue;">Log in to add to basket or wishlist</h6></a></li>
+                                                                            {% endif %}
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="profile">
+                                                {% for product in products %}
+                                                <div id="shop-product2" class="li-item">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-4">
+                                                            <div class="single-product">
+                                                                <span class="sale-text">{% translate 'Sale' %}</span>
+                                                                <div class="product-img">
+                                                                    <a href="{% url 'product_detail' product.pk %}">
+                                                                    <img class="primary-image" alt="" src="{{product.product_version.first.cover_image.url}}">
+                                                                    </a>							
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-8 col-md-8">
+                                                            <div class="f-fix">
+                                                                <h2 class="product-name">
+                                                                    <a href="{% url 'product_detail' product.pk %}">{{product.title}}</a>
+                                                                </h2>
+                                                                
+                                                                <div class="p-box">
+                                                                {% if product.sale %}
+                                                                    <span class="special-price">{{product.old_price}}</span>
+                                                                    <span class="old-price">{{product.price}}</span>
+                                                                {% else %}
+                                                                    <span class="special-price">{{product.price}}</span>
+                                                                {% endif %}
+
+                                                                </div>
+                                                                <div class="product-icon">
+                                                                    <ul class="d-flex">
+                                                                        {% if user.is_authenticated %}
+                                                                        <li class="basket" data-id="{{product.product_version.first.pk}}"><i data-id="{{product.product_version.first.pk}}" class="fa fa-shopping-cart"></i></li>
+                                                                        <li class="wishlist" data-id="{{product.product_version.first.pk}}"><i data-id="{{product.product_version.first.pk}}" class="fa fa-heart"></i></li>
+                                                                        {% else %}
+                                                                        <li><a href="{% url 'login' %}"><h6 style="font-size: small; color: blue;">Log in to add to basket or wishlist</h6></a></li>
+
+                                                                        {% endif %}
+                                                                    </ul>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                              
+                                            </div>
+                                        </div>
+                                        <div class="shop-all-tab">
+                                            <div class="two-part">
+                                                
+                                                {% if is_paginated %}
+                                                <div class="row mt-5">
+                                                    <div class="col text-center">
+                                                        <div class="block-27">
+                                                            <ul style="padding-left: 78%;">
+                                                                {% if page_obj.has_previous %}
+                                                                    <li><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+                                                                {% endif %}
+                                                                {% for page in paginator.page_range %}
+                                                                    {% if page_obj.number == page %}
+                                                                    <li class="active"><span>{{ page }}</span></li>
+                                                                    {% else %}
+                                                                    <li><a href="?page={{page}}">{{page}}</a></li>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                                {% if page_obj.has_next %}
+                                                                    <li><a href="?page={{ page_obj.next_page_number }}">&gt;</a></li>
+                                                                {% endif %}
+                                                            </ul>        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-left: -30px;" class="col-lg-3 col-md-12">
+                            <div class="block block-layered-nav">
+                                <div class="block-title" id="title">
+                                    <h2>Shop By</h2>
+                                </div>
+                            </div>
+                        
+                            <div class="narrow-by-list">
+                                <div class="block layered-attribute">
+                                    <div class="block-title">
+                                        <h2>{% translate 'Category' %}</h2>
+                                    </div>
+                                    <div class="odd">
+                                        <ul>
+                                        {% for cat in category_list %}
+                                            <li class="category-filter" data-id="{{cat.id}}" style="cursor:pointer;">{{cat.name}}</li>
+                                        {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="narrow-by-list">
+                                <div class="block layered-attribute">
+                                    <div class="block-title">
+                                        <h2>{% translate 'Manufacturer' %}</h2>
+                                    </div>
+                                    <div class="odd">
+                                        <ul>
+                                            {% for manufac in manufacturer %}
+                                                <li class="manufacturer-filter" id="{{manufac.id}}" style="cursor: pointer;">{{manufac}}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="narrow-by-list">
+                                <div class="block layered-attribute">
+                                    <div class="block-title">
+                                        <h2>{% translate 'Color' %}</h2>
+                                    </div>
+                                    <div class="odd">
+                                        <ul>
+                                            {% for col in color %}
+                                                <li class="color-filter" data-id="{{col.id}}" style="cursor: pointer;">
+                                                    {{col}}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<script src="{% static 'js/filters.js' %}"></script>
+
+{% endblock %}  

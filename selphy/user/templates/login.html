@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="p-3  d-flex flex-column align-items-center ">
+    <h1>Welcome back</h1>
+    {% include 'messages.html' %}
+    {% if form.errors %}
+      <div class="alert alert-danger alert-dismissible" role="alert">
+          <div id="form_errors">
+              {% for key, value in form.errors.items %}
+                  <strong>{{ value }}</strong>
+              {% endfor %}
+          </div>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    {% endif %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="">Email address</label>
+        {{form.username}}
+        <label for="">Password</label>
+        {{form.password}}
+    
+        <div>
+            <button style="width: 250px;" class="btn btn-primary" type="submit">Login</button>
+        </div>
+        <br>
+        <div>
+            <a style="color: blue;" href="/password_reset/"><p>Forget password?</p></a>
+        </div>
+       
+        <p>Don't have an account? <a style="color: blue ;" href="/register/">Register</a></p>
+    </form>        
+    </div>
+{% endblock %}

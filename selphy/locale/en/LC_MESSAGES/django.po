@@ -1,0 +1,324 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-02 12:16+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\blog\templates\blog.html:12 .\core\templates\base.html:641
+#: .\core\templates\base.html:818 .\product\templates\product.html:11
+msgid "Home"
+msgstr ""
+
+#: .\blog\templates\blog.html:18 .\core\templates\base.html:645
+#: .\core\templates\base.html:827
+msgid "Blog"
+msgstr ""
+
+#: .\blog\templates\blog.html:238
+msgid "Newsletter"
+msgstr ""
+
+#: .\blog\templates\blog.html:248
+msgid "Latest Posts"
+msgstr ""
+
+#: .\blog\templates\blog.html:259
+msgid "Authors"
+msgstr ""
+
+#: .\blog\templates\blog.html:270 .\core\templates\base.html:305
+#: .\product\templates\product.html:240
+msgid "Category"
+msgstr ""
+
+#: .\core\templates\base.html:80
+msgid "Call us toll free:"
+msgstr ""
+
+#: .\core\templates\base.html:111 .\core\templates\base.html:839
+#: .\core\templates\base.html:844
+msgid "My Account"
+msgstr ""
+
+#: .\core\templates\base.html:112
+msgid "My Wishlist"
+msgstr ""
+
+#: .\core\templates\base.html:113 .\core\templates\base.html:850
+msgid "My Cart"
+msgstr ""
+
+#: .\core\templates\base.html:114 .\core\templates\base.html:856
+msgid "Checkout"
+msgstr ""
+
+#: .\core\templates\base.html:115
+msgid "Log In"
+msgstr ""
+
+#: .\core\templates\base.html:132
+msgid "All Categories"
+msgstr ""
+
+#: .\core\templates\base.html:133 .\core\templates\base.html:314
+#: .\product\templates\product.html:17
+msgid "Smartphones & Accessories"
+msgstr ""
+
+#: .\core\templates\base.html:134
+msgid "Computers & Networking"
+msgstr ""
+
+#: .\core\templates\base.html:135
+msgid "Laptops & Tablets"
+msgstr ""
+
+#: .\core\templates\base.html:136
+msgid "Camerea & Camcorders"
+msgstr ""
+
+#: .\core\templates\base.html:137
+msgid "Watches"
+msgstr ""
+
+#: .\core\templates\base.html:138
+msgid "Lights & Lighting"
+msgstr ""
+
+#: .\core\templates\base.html:139
+msgid "Air conditioner"
+msgstr ""
+
+#: .\core\templates\base.html:155
+msgid "Shopping cart"
+msgstr ""
+
+#: .\core\templates\base.html:644
+msgid "About us"
+msgstr ""
+
+#: .\core\templates\base.html:646
+msgid "Pages"
+msgstr ""
+
+#: .\core\templates\base.html:648 .\core\templates\base.html:821
+msgid "about us"
+msgstr ""
+
+#: .\core\templates\base.html:649
+msgid "blog"
+msgstr ""
+
+#: .\core\templates\base.html:650
+msgid "blog details"
+msgstr ""
+
+#: .\core\templates\base.html:651
+msgid "checkout"
+msgstr ""
+
+#: .\core\templates\base.html:652 .\core\templates\base.html:660
+#: .\core\templates\base.html:824
+msgid "Contacts"
+msgstr ""
+
+#: .\core\templates\base.html:653
+msgid "shop"
+msgstr ""
+
+#: .\core\templates\base.html:654
+msgid "single-product"
+msgstr ""
+
+#: .\core\templates\base.html:655
+msgid "shopping-cart"
+msgstr ""
+
+#: .\core\templates\base.html:656
+msgid "wishlist"
+msgstr ""
+
+#: .\core\templates\base.html:657
+msgid "Faq page"
+msgstr ""
+
+#: .\core\templates\base.html:718
+msgid "Our brands"
+msgstr ""
+
+#: .\core\templates\base.html:746
+msgid "Latest Tweets"
+msgstr ""
+
+#: .\core\templates\base.html:755
+msgid "Magento themes Club"
+msgstr ""
+
+#: .\core\templates\base.html:760
+msgid ""
+"Check Out \"Optician - Responsive #OpenCart #Digital #Theme\" on "
+"#envatomarket by"
+msgstr ""
+
+#: .\core\templates\base.html:775
+msgid "Stay Connected"
+msgstr ""
+
+#: .\core\templates\base.html:830
+msgid "View All Themes"
+msgstr ""
+
+#: .\core\templates\base.html:853
+msgid "Wishlist"
+msgstr ""
+
+#: .\core\templates\base.html:865
+msgid "Information"
+msgstr ""
+
+#: .\core\templates\base.html:870
+msgid "Sitemap"
+msgstr ""
+
+#: .\core\templates\base.html:873 .\core\templates\base.html:879
+msgid "Privacy Policy"
+msgstr ""
+
+#: .\core\templates\base.html:876
+msgid "Advanced Search"
+msgstr ""
+
+#: .\core\templates\base.html:882
+msgid "Contact Us"
+msgstr ""
+
+#: .\core\templates\base.html:891
+msgid "Customer Service"
+msgstr ""
+
+#: .\core\templates\base.html:896
+msgid "Product Recall"
+msgstr ""
+
+#: .\core\templates\base.html:899 .\core\templates\base.html:908
+msgid "Gift Vouchers"
+msgstr ""
+
+#: .\core\templates\base.html:902
+msgid "Returns and Exchanges"
+msgstr ""
+
+#: .\core\templates\base.html:905
+msgid "Shipping Options"
+msgstr ""
+
+#: .\core\templates\base.html:916
+msgid "Store information"
+msgstr ""
+
+#: .\core\templates\base.html:920
+msgid "My Company"
+msgstr ""
+
+#: .\core\templates\base.html:930
+msgid "Sign up for emails"
+msgstr ""
+
+#: .\core\templates\base.html:942
+msgid "Subscribe"
+msgstr ""
+
+#: .\product\templates\product.html:45
+msgid "Show"
+msgstr ""
+
+#: .\product\templates\product.html:51
+msgid "per page"
+msgstr ""
+
+#: .\product\templates\product.html:56 .\product\templates\product.html:200
+msgid "Sort By"
+msgstr ""
+
+#: .\product\templates\product.html:58 .\product\templates\product.html:202
+msgid "Position"
+msgstr ""
+
+#: .\product\templates\product.html:59 .\product\templates\product.html:203
+msgid "Name"
+msgstr ""
+
+#: .\product\templates\product.html:60 .\product\templates\product.html:204
+#: .\product\templates\product.html:253
+msgid "Price"
+msgstr ""
+
+#: .\product\templates\product.html:75 .\product\templates\product.html:117
+msgid "Sale"
+msgstr ""
+
+#: .\product\templates\product.html:151
+msgid "Review(s)"
+msgstr ""
+
+#: .\product\templates\product.html:153
+msgid "Add Your Review"
+msgstr ""
+
+#: .\product\templates\product.html:188
+msgid "Page:"
+msgstr ""
+
+#: .\product\templates\product.html:270
+msgid "Manufacturer"
+msgstr ""
+
+#: .\product\templates\product.html:284
+msgid "Color"
+msgstr ""
+
+#: .\product\templates\product.html:299
+msgid "Popular Tags"
+msgstr ""
+
+#: .\selphy\settings.py:167
+msgid "English"
+msgstr "English"
+
+#: .\selphy\settings.py:168
+msgid "Azerbaijan"
+msgstr "Azerbaijan"
+
+#: .\user\managers.py:16
+msgid "The Email must be set"
+msgstr ""
+
+#: .\user\managers.py:32
+msgid "Superuser must have is_staff=True."
+msgstr ""
+
+#: .\user\managers.py:34
+msgid "Superuser must have is_superuser=True."
+msgstr ""
+
+#: .\user\models.py:32
+msgid "Viewer"
+msgstr ""
+
+#: .\user\models.py:33
+msgid "Publisher"
+msgstr ""

@@ -1,0 +1,339 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% load custom_tags %}
+{% load mathfilters %}
+{% block css %}
+   <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+{% endblock %}
+{% block content %}
+        <section class="shop-details-area">
+            <div class="breadcrumbs">
+                <div class="container">
+                    <div class="container-inner">
+                        <ul>
+                            <li class="home">
+                                <a href="{% url 'goldapp:index' %}">Home</a>
+                                <span>
+                                    <i class="fa fa-angle-right"></i>
+                                </span>
+                            </li>
+                            <li class="home-two">
+                                <a href="#">{{product_detail.product.category.name}}</a>
+                                <span>
+                                    <i class="fa fa-angle-right"></i>
+                                </span>
+                            </li>
+                            <li class="category3">
+                                <strong>{{product_detail.product.title}}</strong>
+                            </li>
+                        </ul>
+                    </2div>
+                </div>
+            </div>
+            <div class="shop-details">
+                <div class="container">
+                    <div class="row" >
+                        <div id="detail_color" class="col-lg-4 col-md-6">
+                            <div class="s_big">
+                                <div>
+                                    <div class="tab-content jump">
+                                        <div id="{{product_detail.cover_image.pk}}" class="tab-pane fade show active">
+                                            <div class="simpleLens-big-image-container">
+                                                <a class="simpleLens-lens-image" data-lens-image="{{product_detail.cover_image.url}}">
+                                                    <img  alt="" src="{{product_detail.cover_image.url}}" class="simpleLens-big-image">
+                                                </a>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div  class="thumnail-image fix" >
+                                        <ul  class="tab-menu nav" >
+                                            {% for img in image %}
+                                            <li><a data-bs-toggle="tab" href="{{img.image.url}}"><img style="height:100px;" alt="" src="{{img.image.url}}"></a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-6 col-12">
+                            <div class="cras">
+                                <div id="info_div">
+                                    <div class="product-name">
+                                        <h1 id="product_detail_title" >{{product_detail.product.title}} {{product_detail.color.name}}</h1>
+                                    </div>
+                                </div>
+
+                                <div class="pre-box">
+                                    {% if product_detail.product.sale %}
+                                        <span class="special-price">{{product_detail.product.old_price}}</span>
+                                    {% else %}
+                                        <span class="special-price">{{product_detail.product.price}}</span>
+                                    {% endif %}
+
+                                    <div class="color-content">
+                                        <h3>Select Color</h3>
+                                        <div class="color-groups" >
+                                            {% for color in colors %}
+                                                <div class="color-filter-detail" data-product="{{color.product}}" data-version="{{color.id}}" id="{{color.color.name}}" style="background-color:{{color.color.code}}"></div>
+                                            {% endfor %}  
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        {{product_detail.product.quality_rating}}
+                                    </div>
+                                </div>
+                                <div class="add-to-box1">
+                                    <div class="add-to-box add-to-box2">
+                                        <div class="add-to-cart" >
+                                            {% if user.is_authenticated %}
+                                            <div class="d-flex">
+                                                <div class="input-content">
+                                                    <label for="qty">Quantity:</label>
+                                                    <input id="qty" class="input-text qty" type="text" title="Qty" va3lue="1" maxlength="12" name="qty">
+                                                </div>
+                                                <div id="basket">
+                                                    <button id="basket-detail" data-id="{{product_detail.pk}}" class="button2 btn-cart "  title="" type="button">
+                                                        <span data-id="{{product_detail.pk}}">Add to Cart</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="product-icon">
+                                                <ul id="wishlist" class="d-flex">
+                                                    <li data-id="{{product_detail.pk}}" class="wishlist"><i style="cursor: pointer;" data-id="{{product_detail.pk}}" class="fa fa-heart"></i></li>
+                                                </ul>
+                                            </div>
+                                            {% else %}
+                                            <li><a href="{% url 'login' %}"><h6 style="font-size: small; color: blue;">Log in to add to basket or wishlist</h6></a></li>
+
+                                            {% endif %}
+                                        </div>
+                                    </div> 
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end main_slider_area
+		============================================ -->
+        <section class="tab_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <div class="text">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation">
+                                    <a href="#home" class="active" aria-controls="home" role="tab" data-bs-toggle="tab">Product Description</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#profile" aria-controls="profile" role="tab" data-bs-toggle="tab">Reviews</a>
+                                </li>
+                                
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content jump">
+                                <div role="tabpanel" class="tab-pane active" id="home">{{product_detail.product.description}}</div>
+                                <div role="tabpanel" class="tab-pane" id="profile">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-12">
+                                            <div class="customer-reviews">
+                                                {% for review in reviews %}
+                                                    <div class="customer-reviews-one">
+                                                        <p><a href="#">Plazathemes</a> <span>Review by </span>{{review.nickname}}</p>
+                                                    </div>
+                                                    <div class="customer-reviews-two">
+                                                        <p>Quality</p>
+                                                        <div class="pro-rating" id="quality_rating">
+                                                            <div class="pro_one">
+                                                                {% for i in review.quality_rating|get_range %}
+                                                                    <a href="#">
+                                                                        <i class="fa fa-star"></i>
+                                                                    </a>
+                                                                {% endfor %}
+                                                                {% for i in review.quality_rating|sub:5|abs|get_range %}
+                                                                    <a href="#">
+                                                                        <i class="fa fa-star-o"></i>
+                                                                    </a>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="customer-reviews-two">
+                                                        <p>Price</p>
+                                                        <div class="pro-rating pro-ra-two" id="price_rating">
+                                                            <div class="pro_one">
+                                                                {% for i in review.price_rating|get_range %}
+                                                                    <a href="#">
+                                                                        <i class="fa fa-star"></i>
+                                                                    </a>
+                                                                {% endfor %}
+                                                                {% for i in review.price_rating|sub:5|abs|get_range %}
+                                                                    <a href="#">
+                                                                        <i class="fa fa-star-o"></i>
+                                                                    </a>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="customer-reviews-two">
+                                                        <p>Value</p>
+                                                        <div class="pro-rating pro-ra-two" id="value_rating">
+                                                            <div class="pro_one">
+                                                                {% for i in review.value_rating|get_range %}
+                                                                    <a href="#">
+                                                                        <i class="fa fa-star"></i>
+                                                                    </a>
+                                                                {% endfor %}
+                                                                {% for i in review.value_rating|sub:5|abs|get_range %}
+                                                                    <a href="#">
+                                                                        <i class="fa fa-star-o"></i>
+                                                                    </a>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="date">   
+                                                        <p>Date:<small>({{review.created_at|date:"d/m/Y"}})</small></p>
+                                                    </div><br>
+                                                    <div class="reviews-wrapper">
+                                                        <b style="margin-left: -30px;">Comment:</b>
+                                                        <div class="review-txt"> {{ review.comment}}</div>
+                                                    </div>
+                                                  <br><br>
+                                                
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-12">
+                                            <div class="form-add table-responsive">
+                                                <form action="#" method="POST">
+                                                    {% csrf_token %}
+                                                    <div class="form-border">
+                                                        <div class="add-text">
+                                                            <h3>
+                                                                You're reviewing:
+                                                                <span>Cras neque metus</span>
+                                                            </h3>
+                                                            <h4>
+                                                                How do you rate this product?*
+                                                            </h4>
+                                                        </div>
+                                                        <table class="data-table">
+                                                            <tr>
+                                                                <th></th>
+                                                                <th>1 star</th>
+                                                                <th>2 stars</th>		
+                                                                <th>3 stars</th>
+                                                                <th>4 stars</th>
+                                                                <th>5 stars</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="one two">Quality</td>
+                                                                <td><input type="radio" name="quality_rating" value="1" required></td>		
+                                                                <td><input type="radio" name="quality_rating" value="2"  required></td>		
+                                                                <td><input type="radio" name="quality_rating" value="3"  required></td>		
+                                                                <td><input type="radio" name="quality_rating" value="4"  required></td>		
+                                                                <td><input type="radio" name="quality_rating" value="5"  required></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="one">Price</td>
+                                                                <td><input type="radio" name="price_rating" value="1"  required></td>		
+                                                                <td><input type="radio" name="price_rating" value="2"  required></td>		
+                                                                <td><input type="radio" name="price_rating" value="3"  required></td>		
+                                                                <td><input type="radio" name="price_rating" value="4"  required></td>		
+                                                                <td><input type="radio" name="price_rating" value="5"  required></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="one">Value</td>
+                                                                <td><input type="radio" name="value_rating" value="1"  required></td>		
+                                                                <td><input type="radio" name="value_rating" value="2"  required></td>		
+                                                                <td><input type="radio" name="value_rating" value="3"  required></td>		
+                                                                <td><input type="radio" name="value_rating" value="4"  required></td>		
+                                                                <td><input type="radio" name="value_rating" value="5"  required></td>
+                                                            </tr>
+                                                        </table>
+                                                        <div class="input-one form-list">
+                                                            <label class="required">Nickname<em>*</em></label>
+                                                            <input type="text" class="email" name="nickname" required>
+                                                        </div>
+                                                        
+                                                        <div class="input-one">
+                                                            <label class="required">Review<em>*</em></label>
+                                                            <textarea class="email" name="comment"></textarea>
+                                                        </div>
+                                                        {% if user.is_authenticated %}
+                                                        <button class="button2 btn-cart btn-in" type="submit" title="">
+                                                            <span>Submit Review</span>
+                                                        </button>
+                                                        {% else %}
+                                                        <li><a href="{% url 'login' %}"><h6 style="font-size: small; color: blue;">Log in to add to basket or wishlist</h6></a></li>
+                                                        {% endif %}
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="messages">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="product_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ma-title">
+                            <h2>
+                                Related
+                            </h2>
+                        </div>
+                        <div class="UpSell indicator-style owl-carousel">
+                            {% for relate in related %}
+                            <div class="single-product">
+                                <span class="sale-text">Sale</span>
+                                <div class="product-img">
+                                    <a href="{% url 'product_detail' relate.pk %}">
+                                        <img id="" class="primary-image" src="{{relate.product_version.first.cover_image.url}}" alt="" />
+                                    </a>							
+                                </div>
+                                <div class="product-content">
+                                    <div class="price-box">
+                                        {% if relate.sale %}
+                                        <span class="old-price">{{relate.old_price}}</span>
+                                        <span class="special-price">{{relate.price}} </span>
+                                        {% else %}
+                                        <span class="special-price">{{relate.price}} </span>
+                                        {% endif %}
+                                    </div>
+                                    <h2 class="product-name"><a href="#">{{relate.title}}</a></h2>
+                                    <div class="product-icon">
+                                        <ul class="d-flex">
+                                            <li class="basket" data-id="{{relate.product_version.first.pk}}"><i  style="cursor: pointer;" data-id="{{relate.product_version.first.pk}}" class="fa fa-shopping-cart"></i></li>
+                                            <li class="wishlist" data-id="{{relate.product_version.first.pk}}"><i style="cursor: pointer;" data-id="{{relate.product_version.first.pk}}" class="fa fa-heart "></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- start shop_area
+		============================================ -->
+
+  <script src="{% static 'js/product.js' %}"></script>
+{% endblock %}

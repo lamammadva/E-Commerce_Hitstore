@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load mathfilters %}
+
+{% block content %}
+        <div class="shopping-cart-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <div class="s-cart-all">
+                            <div class="page-title">
+                                <h1>Wishlist</h1>
+                            </div>
+                            <div class="cart-form table-responsive">
+                                <table id="shopping-cart-table" class="data-table cart-table">
+                                    <tbody id="shopping_basket">
+                                    <tr>
+                                        <th>Remove</th>
+                                        <th>Images</th>
+                                        <th>Product Name</th>
+                                        <th>Unit Price</th>
+                                        <th>Qty</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                    {% for product in basket.items.all %}
+                                    
+                                    <tr >
+                                        <td data-id="{{product.product.pk}}" class="sop-icon">
+                                            <i style="cursor: pointer;" data-id="{{product.product.pk}}" class="fa fa-times"></i>
+                                        </td>
+                                        <td class="sop-cart">
+                                            <a href="{% url 'product_detail' product.product.pk %}"><img width="150px" class="primary-image" alt="" src="{{product.product.cover_image.url}}"></a>
+                                        </td>
+                                        <td class="sop-cart"><a href="{% url 'product_detail' product.product.pk %}">{{product.product.product.title}}</a></td>
+                                        {% if product.product.product.sale %}
+                                        <td class="sop-cart">${{product.product.product.old_price}}</td>
+                                        {% else %}
+                                        <td class="sop-cart">${{product.product.product.price}}</td>
+                                        {% endif %}
+                                        <td><input id="basket_qty" class="input-text qty" type="text" name="qty" maxlength="12" value="{{product.quantity}}" title="Qty"></td>
+                                        <td class="sop-cart">${{product.get_subtotal}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    
+                                </table>
+                                <div class="a-all ">
+                                    <div class="a-left">
+                                        <button class="button2  notice" title="" type="button">
+                                            <span>Continue Shopping</span>
+                                        </button>
+                                    </div>
+                                    <div class="a-right">
+                                        <button class="button2 notice Estimate" title="" type="button">
+                                            <span>Clear Shopping Cart</span>
+                                        </button>
+                                        <button class="button2 notice " title="" type="button">
+                                            <span>Update Shopping Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-collaterals row">
+                    
+                    <div class="col-lg-4 col-md-12">
+                        <div class="totals">
+                            <div class="subtotal">
+                                <p>Subtotal <span>$155.00</span></p>
+                                <p>Grand Total <span>$155.00</span></p>
+                            </div>
+                            <button class="button2 get" title="" type="button">
+                                <span>Proceed to Checkout</span>
+                            </button>
+                            <a href="#">Checkout with Multiple Addresses</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+{% endblock %}

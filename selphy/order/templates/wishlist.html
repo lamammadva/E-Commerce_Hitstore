@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+ <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
+{% block content %}
+        <div class="shopping-cart-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <div class="s-cart-all">
+                            <div class="page-title">
+                                <h1>wishlist</h1>
+                            </div>
+                            <div  class="cart-form table-responsive">
+                                <table id="shopping-cart-table" class="data-table cart-table">
+                                    <tbody id="shopping_wishlist">
+                                    <tr>
+                                        <th>Remove</th>
+                                        <th>Images</th>
+                                        <th>Product Name</th>
+                                        <th>Edit</th>
+                                        <th>Unit Price</th>
+                                        <th>Qty</th>
+                                        <th>Add to cart</th>
+                                    </tr>
+                                    {% for product in wishlist.product.all %}
+                                    <tr>
+                                        <td  data-id="{{product.product.pk}}" class="sop-icon">
+                                            <i class="fa fa-times"></i>
+                                        </td>
+                                        <td class="sop-cart">
+                                            <a href=""><img width="150px" class="primary-image" alt="" src="{{product.cover_image.url}}"></a>
+                                        </td>
+                                        <td class="sop-cart"><a href="#">{{product.product.title}}  {{product.color.name}}</a></td>
+                                        <td class="sop"><a href="#">Edit</a></td>
+                                        <td class="sop-cart">{{product.product.price}}$</td>
+                                        <td><input class="input-text qty" type="text" name="qty" maxlength="12" value="1" title="Qty"></td>
+                                        <td><button  data-id="{{product.pk}}" class="button2  notice elit basket" title="" type="button">
+                                            Add to cart
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+        <div class="main_contact_area">
+            <div class="breadcrumbs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="container-inner">
+                                <ul>
+                                    <li class="home">
+                                        <a href="{% url 'goldapp:index' %}">{% translate 'Home' %}</a>
+                                        <span>
+                                            <i class="fa fa-angle-right"></i>
+                                        </span>
+                                    </li>
+                                    <li class="category3">
+                                        <a href="{% url 'blog' %}">
+                                            <strong>{% translate 'Blog' %}</strong>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <section class="main-blog-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-9 col-12">
+                        {% for blog in allblogs %}
+                        <div class="single-bolg">
+                            <div class="post-format-area">
+                                <div class="b-slide-all owl-carousel">
+                                {% if blog.category.name == 'Image' %}
+                                    <img style="height:300px; width:500px;" src="{{blog.file.url}} " alt="">
+                                {% elif blog.category.name == 'Video' %}
+                                  <video style="width: 500px;height: 300px; margin-left: -335px;"  controls>
+                                    <source  src="{{ blog.file.url }}" type="video/mp4">
+                                </video>
+                                {% elif blog.category.name == 'Audio' %}
+                                  <audio style="width:800px ;" controls> 
+                                    <source src="{{ blog.file.url}}" type="audio/mpeg">
+                                  </audio>
+                                {% endif %}
+
+                                    <!-- <img src="{% static 'img/blog/2.jpg' %}" alt="">
+                                    <img src="{% static 'img/blog/3.jpg' %}" alt=""> -->
+                                </div>
+                            </div>
+                            <div class="entry-header-area">
+                                {% if blog.category.name == 'Image' %}
+                                <div class="post-types">
+                                    <i class="fa fa-picture-o"></i>
+                                </div>
+                                {% elif blog.category.name == 'Video' %}
+                                <div class="post-types">
+                                    <i class="fa fa-video-camera"></i>
+                                </div>
+                                {% elif blog.category.name == 'Audio' %}
+                                 <div class="post-types">
+                                    <i class="fa fa-music"></i>
+                                </div>
+                                {% endif %}
+                                <div class="info-blog">
+                                    <div class="single-b-info category-name">
+                                        <i class="fa fa-folder-open-o"></i>
+                                            {{blog.category.name}}
+                                    </div>
+                                    <div class="single-b-info createdby">
+                                        <i class="fa fa-user"></i>
+                                        <span>{{blog.author}}</span>
+                                    </div>
+                                    <h2 class="name">
+                                        <a href="/blog_details/{{blog.id}}">{{blog.title}}</a>
+                                    </h2>
+                                </div>
+                            </div>
+                            <p>{{blog.author.description}}</p>
+                            
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <div class="blog-right-sidebar">
+                            <div class="latest-posts">
+                                <h3 class="sp-module-title">
+                                    <span>{% translate 'Authors' %}</span> 
+                                </h3>
+                            
+                                {% for cat in authors %}
+                                <div class="single-l-post">
+                                    <a href="/blog/?categories={{cat.id}}">{{cat.title}}</a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="latest-posts">
+                                <h3 class="sp-module-title">
+                                    <span>{% translate 'Category' %}</span>
+                                </h3>
+                            
+                                {% for cate in category %}
+                                    <div class="single-l-post">
+                                        <a href="?type={{cate.name}}">{{cate.name}}</a>
+                                    </div>
+                                    
+
+                                {% endfor %}
+                            </div>
+                            <div class="add-r-sidebar">
+                                <p class="banner-block">
+                                    <a href="#">
+                                        <img alt="" src="{% static 'img/blog/3_002.jpg' %}">
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+{% endblock %}
