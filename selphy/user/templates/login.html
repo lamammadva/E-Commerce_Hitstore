@@ -1,37 +1,72 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="p-3  d-flex flex-column align-items-center ">
-    <h1>Welcome back</h1>
-    {% include 'messages.html' %}
-    {% if form.errors %}
-      <div class="alert alert-danger alert-dismissible" role="alert">
-          <div id="form_errors">
-              {% for key, value in form.errors.items %}
-                  <strong>{{ value }}</strong>
-              {% endfor %}
-          </div>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-    {% endif %}
-    <form action="" method="post">
-        {% csrf_token %}
-        <label for="">Email address</label>
-        {{form.username}}
-        <label for="">Password</label>
-        {{form.password}}
-    
-        <div>
-            <button style="width: 250px;" class="btn btn-primary" type="submit">Login</button>
+<div class="breadcrumb-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-wrap">
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Login</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
-        <br>
-        <div>
-            <a style="color: blue;" href="/password_reset/"><p>Forget password?</p></a>
-        </div>
-       
-        <p>Don't have an account? <a style="color: blue ;" href="/register/">Register</a></p>
-    </form>        
     </div>
+</div>
+<!-- breadcrumb area end -->
+
+<!-- Start of Login Wrapper -->
+<div class="login-wrapper pb-70">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <main id="primary" class="site-main">
+                    <div class="user-login">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12">
+                                <div class="section-title text-center">
+                                    <h3>Log in to your account</h3>
+                                </div>
+                            </div>
+                        </div> <!-- end of row -->
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-6 offset-lg-2 offset-xl-3">
+                                <div class="login-form">
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-group row align-items-center mb-4">
+                                            <label for="email" class="col-12 col-sm-12 col-md-4 col-form-label">Email address</label>
+                                            <div class="col-12 col-sm-12 col-md-8">
+                                                <input type="text" name="username" class="form-control mb-1" id="email" placeholder="Email" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row align-items-center mb-4">
+                                            <label for="c-password" class="col-12 col-sm-12 col-md-4 col-form-label">Password</label>
+                                            <div class="col-12 col-sm-12 col-md-8">
+                                                <input type="password" name="password" class="form-control mb-1" id="c-password" placeholder="Password" required>
+                                            </div>
+                                        </div>
+                                        <div class="login-box mt-5 text-center">
+                                            <p style="margin-left: 55%;"><a href="{% url 'forget_password' %}">Forgot your password?</a></p>
+                                            <button type="submit" class="btn btn-secondary mb-4 mt-4">Sign In</button>
+                                        </div>
+                                        <div class="text-center pt-20 top-bordered">
+                                            <p>No account? <a href="{% url 'register' %}">Create one here</a>.</p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end of user-login -->
+                </main> <!-- end of #primary -->
+            </div>
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div>
+<!-- End of Login Wrapper -->
+
 {% endblock %}

@@ -22,6 +22,93 @@ html, body {
         max-width: 1170px;
     }
 }
+.breadcrumb-area {
+    background: #f0f0f0;
+    padding: 12px 0;
+}
+
+.breadcrumb-wrap .breadcrumb {
+    background: transparent;
+    margin-bottom: 0;
+    padding: 20px 0;
+}
+
+.breadcrumb-item>a {
+    color: #111;
+}
+
+.breadcrumb-item>a:hover {
+    color: #444;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    content: "\f105";
+    padding: 0 15px;
+    font-family: fontawesome;
+}
+
+.register-form {
+    padding: 40px;
+    border: 1px solid #ebebeb;
+}
+.login-wrapper .login-form {
+    padding: 50px 50px 40px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    -webkit-box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-top: 19px;
+}
+
+
+.login-box p a {
+    color: #111;
+}
+
+.top-bordered {
+    border-color: #ebebeb;
+    border-style: solid;
+    border-width: 1px 0 0;
+}
+
+.registration-form p a {
+    color: #111;
+}
+
+.section-title {
+    position: relative;
+}
+.section-title::after {
+    background: #f0f0f0;
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    width: 78%;
+    left: 12%;
+    z-index: -1;
+
+}
+.section-title h3 {
+    background: #fff none repeat scroll 0 0;
+    color: #111;
+    display: inline-block;
+    font-size: 26px;
+    padding-right: 0px;
+    position: relative;
+    text-transform: capitalize;
+}
+.user-login  {
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-top: 46px;
+    width: 79%;
+    margin-left: 11%;
+}
+
+
+
+
+
 .row {
 	margin-right: calc(var(--bs-gutter-x) * -.6);
 	margin-left: calc(var(--bs-gutter-x) * -.6);

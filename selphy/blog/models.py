@@ -3,7 +3,7 @@ from selphy.utils.base import BaseModel
 from django.core.validators import FileExtensionValidator
 from ckeditor_uploader.fields import RichTextUploadingField 
 
-# Create your models here.
+# Create your models here. 
 class Author(BaseModel):
     title=models.CharField(max_length=100,verbose_name='Title of the author',help_text='Max 100 characters')
 

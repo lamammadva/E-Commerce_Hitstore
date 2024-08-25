@@ -1,3 +1,3 @@
-if (typeof jQuery === 'undefined') {
+if (!jQuery) {
   jQuery = django.jQuery;
 }

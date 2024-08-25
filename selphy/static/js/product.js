@@ -49,7 +49,6 @@ function getBasketdetail() {
     const basketdetail = document.querySelector('#basket-detail');
     const quantity= document.querySelector('#qty')
         basketdetail.addEventListener('click', (element) => {
-            console.log(element.target);
             return fetch(`${location.origin}/api/basket/`,{
                 method: 'POST',
                 headers: {

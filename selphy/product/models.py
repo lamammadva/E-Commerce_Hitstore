@@ -61,7 +61,7 @@ class Product(BaseModel):
 
     def get_absolute_url(self):
         return reverse('product_detail', kwargs={"pk": self.get_version})
-   
+
 class Product_version(BaseModel):
     color=models.ForeignKey(Color,on_delete=models.CASCADE,verbose_name='Color of the product',related_name='product_version_color')
     product=models.ForeignKey(Product,on_delete=models.CASCADE,related_name='product_version')
