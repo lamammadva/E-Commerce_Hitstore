@@ -1,11 +1,13 @@
-const color_detail= document.querySelectorAll('.color-filter-detail')
-const productTitle =document.getElementById('product_detail_title')
+const color_detail = document.querySelectorAll('.color-filter-detail')
+// const productTitle = document.getElementById('product_detail_title')
 color_detail.forEach((element) => {
     element.addEventListener('click', () => {
-        let url = `${location.origin}/api/products/${element.getAttribute('data-product')}/versions/${element.getAttribute('data-version')}/`
-        url += `?color=${element.getAttribute('id')}`    
+        let url = `${location.origin}/api/product_version/`
+        console.log(url);
+        url += `?color=${element.getAttribute('id')}`
         fetch(url).then(response => response.json()).then(data => {
-            productTitle.innerHTML=`<h1>${data.product.title} ${data.color.name}</h1>`;
+            console.log(data);
+            // productTitle.innerHTML = `<h1>${data.product.title} ${data.color.name}</h1>`;
             document.getElementById('detail_color').innerHTML = `
             <div class="s_big">
                 <div>
@@ -13,7 +15,7 @@ color_detail.forEach((element) => {
                         <div id="${data['cover_image']}" class="tab-pane fade show active">
                             <div class="simpleLens-big-image-container">
                                 <a class="simpleLens-lens-image" data-lens-image="${data['color_url']}">
-                                <img alt="" src="${data['cover_image']}" class="simpleLens-big-image">
+                                <img  style="width:359px;height:359px" src="${data['cover_image']}" class="simpleLens-big-image">
                             </a>
                         </div>
                     </div>
@@ -33,41 +35,42 @@ color_detail.forEach((element) => {
             `
             document.getElementById('basket').innerHTML = `
                 <button id="basket-detail" data-id="${data['id']}" class="button2 btn-cart " title="" type="button"><span data-id="${data['id']}">Add to Cart</span></button>
-            ` 
+            `
             getWishlist()
             getBasketdetail()
-
-           
-            
         })
     })
 })
 
 
- 
+
 function getBasketdetail() {
     const basketdetail = document.querySelector('#basket-detail');
-    const quantity= document.querySelector('#qty')
-        basketdetail.addEventListener('click', (element) => {
-            return fetch(`${location.origin}/api/basket/`,{
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrftoken,
-                },
-                body: JSON.stringify({
-                    'product': element.target.dataset.id,
-                    'quantity': parseInt(quantity.value) ,
-                    
-                })
+    const quantity = document.querySelector('#qty')
+    basketdetail.addEventListener('click', (element) => {
+
+        console.log(element.target);
+
+        return fetch(`${location.origin}/api/basket/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+            },
+            body: JSON.stringify({
+                'product': element.target.dataset.id,
+                'quantity': parseInt(quantity.value),
+
             })
+
+        })
             .then((response) => {
-                if (response.status === 200){
+                if (response.status === 200) {
                     alert('Added to Basket')
                 }
-        })
-        })
-        }
+            })
+    })
+}
 
 getBasketdetail()
 

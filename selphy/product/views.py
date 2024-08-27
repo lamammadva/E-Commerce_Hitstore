@@ -3,7 +3,7 @@ from django.db import models
 from user.models import CustomUser
 from django.db.models.query import QuerySet
 from django.shortcuts import render,redirect
-from django.http import HttpRequest, HttpResponse, HttpResponseForbidden
+from django.http import Http404, HttpRequest, HttpResponse, HttpResponseForbidden
 from django.views.generic import ListView,DetailView,CreateView
 from jinja2 import Environment, FileSystemLoader
 from .models import *
@@ -35,12 +35,14 @@ class ProductdetailView(DetailView,CreateView):
     form_class=ReviewForm
 
     def get_object(self):
-        return Product_version.objects.filter(pk=self.kwargs['pk']).first()   #hal hazirda oldugumuz versiya
-    
+        return Product_version.objects.filter(pk=self.kwargs['pk']).first()
+        
     def get_context_data(self, **kwargs):
         context= super().get_context_data(**kwargs)
         product_color=[]
         product=Product.objects.get(product_version=self.get_object())
+         
+        print(product)
         product_versions=product.product_version.all()
         related_product=Product.objects.filter(category=product.category).exclude(product_version=self.get_object())
 

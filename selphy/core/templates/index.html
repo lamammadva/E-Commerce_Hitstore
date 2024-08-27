@@ -71,11 +71,13 @@
                                             {% if shop.sale %}
                                             <span class="sale-text">Sale</span>
                                             {% endif %}
+                                            {% if image %}
                                             <div class="product-img">
                                                 <a href="{% url 'product_detail' shop.product_version.first.pk %}">
                                                     <img class="primary-image" src="{{shop.product_version.first.cover_image.url}}" alt="" />
                                                 </a>							
                                             </div>
+                                            {% endif %}
                                             <div class="product-content">
                                                 <div class="price-box">
                                                     {% if shop.sale %}

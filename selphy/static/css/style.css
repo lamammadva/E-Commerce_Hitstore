@@ -56,7 +56,9 @@ html, body {
     border: 1px solid rgba(0, 0, 0, 0.125);
     -webkit-box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-top: 19px;
 }
+
 
 .login-box p a {
     color: #111;
@@ -95,10 +97,14 @@ html, body {
     position: relative;
     text-transform: capitalize;
 }
-.user-login .login-info p:not(.lost-password) {
+.user-login  {
     font-size: 14px;
     margin-bottom: 20px;
+    margin-top: 46px;
+    width: 79%;
+    margin-left: 11%;
 }
+
 
 
 

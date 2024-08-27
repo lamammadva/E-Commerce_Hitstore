@@ -19,8 +19,22 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
-urlpatterns = i18n_patterns(
+from rest_framework import permissions
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Your API",
+      default_version='v1',
+      description="Test description",
+      terms_of_service="https://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="contact@yourapi.local"),
+      license=openapi.License(name="BSD License"),
+   ),
+   public=True,
+)
+urlpatterns =[
     path('admin/', admin.site.urls),
     path('',include('blog.urls')),
     path('',include('product.urls')),
@@ -31,12 +45,19 @@ urlpatterns = i18n_patterns(
     # path("flatpages/", include("django.contrib.flatpages.urls")),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('api-auth/', include('rest_framework.urls')),
-)
-
-urlpatterns += [
     path('',include('product.api.urls')),
     path('',include('order.api.urls')),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+
 ]
+# urlpatterns +(
+#     # path('', include('product.api.urls')),
+#     # path('', include('order.api.urls')),
+#     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+# )
+
+
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
