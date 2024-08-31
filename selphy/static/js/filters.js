@@ -19,15 +19,15 @@ categories.forEach((element) => {
                         </div>
                         <div class="product-content">
                             <div class="price-box">
-                            ${(data[i]['sale'] ? `<span class="special-price">${data[i]['old_price']}</span><span class="old-price">${data[i]['price']}</span>` : `<span class="special-price">${data[i]['price']}</span>`)}
+                            ${(data[i]['sale'] ? `<span class="special-price">${data[i]['old_price']}${'$'}</span><span class="old-price">${data[i]['price']}${'$'}</span>` : `<span class="special-price">${data[i]['price']}${'$'}</span>`)}
                                 
                             </div>
                             <h2 class="product-name"><a href="">${data[i]['title']}</a></h2>
                             <div class="product-icon">
                             <ul class="d-flex">
-                                        <li class="basket" data-id="${data[i]['id']}"><i style="cursor: pointer;" data-id="${data[i]['id']}" class="fa fa-shopping-cart"></i></li>
-                                        <li class="wishlist" data-id="${data[i]['id']}"><i style="cursor: pointer;" data-id="${data[i]['id']}" class="fa fa-heart"></i></li>
-                            </ul>
+                                        <li class="basket" data-id="${data[i]['product_version'][0]['id']}"><i style="cursor: pointer;" data-id="${data[i]['product_version'][0]['id']}" class="fa fa-shopping-cart"></i></li>
+                                        <li class="wishlist" data-id="${data[i]['product_version'][0]['id']}"><i style="cursor: pointer;" data-id="${data[i]['product_version'][0]['id']}" class="fa fa-heart"></i></li>
+                                     </ul>
                             </div>
                         </div>
                     </div>
@@ -59,13 +59,14 @@ manufacturer.forEach((element) => {
                                 </div>
                                 <div class="product-content">
                                     <div class="price-box">
-                                    ${(data[i]['sale'] ? `<span class="special-price">${data[i]['old_price']}</span><span class="old-price">${data[i]['price']}</span>` : `<span class="special-price">${data[i]['price']}</span>`)}
+                        
+                                    ${(data[i]['sale'] ? `<span class="special-price">${data[i]['old_price']}${'$'}</span><span class="old-price">${data[i]['price']}${'$'}</span>` : `<span class="special-price">${data[i]['price']}${'$'}</span>`)}
                                     </div>
                                     <h2 class="product-name"><a href="">${data[i]['title']}</a></h2>
                                     <div class="product-icon">
                                     <ul class="d-flex">
-                                        <li class="basket" data-id="${data[i]['id']}"><i style="cursor: pointer;" data-id="${data[i]['id']}" class="fa fa-shopping-cart"></i></li>
-                                        <li class="wishlist" data-id="${data[i]['id']}"><i style="cursor: pointer;" data-id="${data[i]['id']}" class="fa fa-heart"></i></li>
+                                        <li class="basket" data-id="${data[i]['product_version'][0]['id']}"><i style="cursor: pointer;" data-id="${data[i]['product_version'][0]['id']}" class="fa fa-shopping-cart"></i></li>
+                                        <li class="wishlist" data-id="${data[i]['product_version'][0]['id']}"><i style="cursor: pointer;" data-id="${data[i]['product_version'][0]['id']}" class="fa fa-heart"></i></li>
                                      </ul>
                                     </div>
                                 </div>
@@ -102,7 +103,7 @@ color.forEach((element) => {
                         </div>
                         <div class="product-content">
                             <div class="price-box">
-                            ${(data[i]['product']['sale'] ? `<span class="special-price">${data[i]['product']['old_price']}</span><span class="old-price">${data[i]['product']['price']}</span>` : `<span class="special-price">${data[i]['product']['price']}</span>`)}
+                            ${(data[i]['product']['sale'] ? `<span class="special-price">${data[i]['product']['old_price']}${'$'}</span><span class="old-price">${data[i]['product']['price']}${'$'}</span>` : `<span class="special-price">${data[i]['product']['price']}${'$'}</span>`)}
                             </div>
                             <h2 class="product-name"><a href="">${data[i]['product']['title']}</a></h2>
                             <div class="product-icon">
