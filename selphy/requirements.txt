@@ -61,6 +61,7 @@ pytz==2023.3.post1
 PyYAML==6.0.2
 redis==5.0.3
 requests==2.31.0
+setuptools==74.0.0
 simplejson==3.19.3
 six==1.16.0
 SQLAlchemy==2.0.30

@@ -15,7 +15,7 @@ class WishlistSerializer(serializers.ModelSerializer):
         ]
 class BasketItemSerializer(serializers.ModelSerializer):
     subtotal = serializers.SerializerMethodField()
-    product= ProductversionSerializers()
+    product= ProductversionSerializers(many=True)
     class Meta:
         model = Basket_item
         fields = [

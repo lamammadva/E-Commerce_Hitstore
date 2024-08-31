@@ -44,7 +44,6 @@ function getBasket() {
     const baskets = document.querySelectorAll('.basket');
     baskets.forEach((element) => {
         element.addEventListener('click', (element) => {
-            console.log(element);
             return fetch(`${location.origin}/api/basket/`, {
                 method: 'POST',
                 headers: {

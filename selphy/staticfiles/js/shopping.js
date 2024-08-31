@@ -98,7 +98,7 @@ function getRemovewishlist() {
                                 </td>
                                 <td class="sop-cart"><a href="${element['detail_url']}">${element['product']['title']}  ${element['color']['name']}</a></td>
                                 <td class="sop"><a href="#">Edit</a></td>
-                                <td class="sop-cart">${element['product']['price']}$</td>
+                                <td class="sop-cart">${element['product']['price']}${'$'}</td>
                                 <td><input class="input-text qty" type="text" name="qty" maxlength="12" value="1" title="Qty"></td>
                                 <td data-id="${element['id']}"><button class="button2  notice elit" title="" type="button">
                                     Add to cart
@@ -137,7 +137,6 @@ function getRemoveBasket() {
             })
                 .then((response) => {
                     if (response.status === 200) {
-                        alert('Remove from Basket')
                         fetch(`${location.origin}/api/basket/`).then(response => response.json()).then(data => {
                             console.log(data);
                             document.getElementById("shopping_basket").innerHTML = ''
@@ -152,7 +151,7 @@ function getRemoveBasket() {
                                     </td>
                                     <td class="sop-cart"><a href="${element.detail_url}">${element.product.product.title}</a></td>
                                     ${(element.product.product.sale ? `<td class="sop-cart">$${element.product.product.old_price}</td>`:
-                                    `<td class="sop-cart">$${element.product.product.price}</td>`)}
+                                    `<td class="sop-cart">$${element.product.product.price}${'$'}</td>`)}
                                     <td><input class="input-text qty" type="text" name="qty" maxlength="12" value="${element.quantity}" title="Qty"></td>
                                     <td class="sop-cart">$${element.subtotal}</td>
                                 </tr>

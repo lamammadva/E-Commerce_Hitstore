@@ -63,10 +63,10 @@
                                                                 <div class="product-content">
                                                                     <div class="price-box">
                                                                         {% if product.sale %}
-                                                                            <span class="special-price">{{product.old_price}}</span>
-                                                                            <span class="old-price">{{product.price}}</span>
+                                                                            <span class="special-price">{{product.old_price}}$</span>
+                                                                            <span class="old-price">{{product.price}}$</span>
                                                                         {% else %}
-                                                                            <span class="special-price">{{product.price}}</span>
+                                                                            <span class="special-price">{{product.price}}$</span>
                                                                         {% endif %}
                                                                     </div>
                                                                     <h2 class="product-name"><a href="{% url 'product_detail' product.pk %}">{{product.title|safe}}</a></h2>
@@ -88,7 +88,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div role="tabpanel" class="tab-pane" id="profile">
+                                            <!-- <div role="tabpanel" class="tab-pane" id="profile">
                                                 {% for product in products %}
                                                 <div id="shop-product2" class="li-item">
                                                     <div class="row">
@@ -118,7 +118,7 @@
 
                                                                 </div>
                                                                 <div class="product-icon">
-                                                                    <ul class="d-flex">
+                                                                     <ul class="d-flex">
                                                                         {% if user.is_authenticated %}
                                                                         <li class="basket" data-id="{{product.product_version.first.pk}}"><i data-id="{{product.product_version.first.pk}}" class="fa fa-shopping-cart"></i></li>
                                                                         <li class="wishlist" data-id="{{product.product_version.first.pk}}"><i data-id="{{product.product_version.first.pk}}" class="fa fa-heart"></i></li>
@@ -126,8 +126,8 @@
                                                                         <li><a href="{% url 'login' %}"><h6 style="font-size: small; color: blue;">Log in to add to basket or wishlist</h6></a></li>
 
                                                                         {% endif %}
-                                                                    </ul>
-                                                                    </a>
+                                                                    </ul> -->
+                                                                    <!-- </a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -135,7 +135,7 @@
                                                 </div>
                                                 {% endfor %}
                                               
-                                            </div>
+                                            </div>  -->
                                         </div>
                                         <div class="shop-all-tab">
                                             <div class="two-part">

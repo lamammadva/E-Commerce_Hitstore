@@ -63,6 +63,7 @@ class BasketAPIView(APIView):
         version = Product_version.objects.filter(pk=product).first()
         if version and self.request.user.is_authenticated:
             basket = Basket.objects.filter(user=self.request.user).first()
+            print(basket)
             if basket:
                 basket_item = basket.items.filter(product=version).first()
                 if basket_item:

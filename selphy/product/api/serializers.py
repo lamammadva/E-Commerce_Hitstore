@@ -39,7 +39,7 @@ class ProductReadSerializers(serializers.ModelSerializer):
     category=CategoryVersionSerializers()
     manufacturer=ManufacturerVersionSerializers()
     detail_url=serializers.SerializerMethodField()
-
+    
     class Meta:
         model=Product
         fields= [
